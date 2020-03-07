@@ -12,7 +12,9 @@
     <div class="kbBox" id="kbBox"></div>
 
     <div class="startGame" id="startGame">
-        <div class="blockTitle"><p>方块冒险</p></div>
+        <div class="blockTitle">
+            <p>方块冒险</p>
+        </div>
         <a href="javascript:void(0)" id="enterGame">开始游戏</a>
     </div>
 
@@ -32,20 +34,27 @@
     <script src="./js/local.js"></script>
     <script>
         window.onload = function () {
-            var height = document.documentElement.clientHeight;
-            var kbBox = document.getElementById("kbBox");
-            var top = height - 400;
-            console.log(top);
-            kbBox.setAttribute("style", "height:" + top / 2 + "px");
+            if (/Android|webOS|iPhone|iPod|BlackBerry/i.test(navigator.userAgent)) {
+                alert('请用电脑端打开！');
+                location.href = 'http://blog.xiaoiyao.cn';
+                return false;
+            } else {
+                var height = document.documentElement.clientHeight;
+                var kbBox = document.getElementById("kbBox");
+                var top = height - 400;
+                console.log(top);
+                kbBox.setAttribute("style", "height:" + top / 2 + "px");
 
-            var startGameId = document.getElementById("startGame");
-            var enterGameId = document.getElementById("enterGame");
-            var gameId = document.getElementById("gameId");
-            enterGameId.onclick = function () {
-                gameId.setAttribute("style", "display:block");
-                startGameId.setAttribute("style", "display:none");
-                Loop();
+                var startGameId = document.getElementById("startGame");
+                var enterGameId = document.getElementById("enterGame");
+                var gameId = document.getElementById("gameId");
+                enterGameId.onclick = function () {
+                    gameId.setAttribute("style", "display:block");
+                    startGameId.setAttribute("style", "display:none");
+                    Loop();
+                }
             }
+
         }
     </script>
 </body>
