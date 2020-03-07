@@ -1,0 +1,53 @@
+<!doctype html>
+<html>
+
+<head>
+    <meta charset="utf-8">
+    <title>方块冒险</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <div class="kbBox" id="kbBox"></div>
+
+    <div class="startGame" id="startGame">
+        <div class="blockTitle"><p>方块冒险</p></div>
+        <a href="javascript:void(0)" id="enterGame">开始游戏</a>
+    </div>
+
+    <div class="gameId" id="gameId" style="display: none;">
+        <p>游戏玩法：使用左键、右键和上箭头键移动。</p>
+        <div class="canvasDiv">
+            <div class="talk" id="talk"><span id="talkMsg">你好啊</span></div>
+            <canvas id="canvas"> </canvas>
+        </div>
+
+
+    </div>
+    <script src="./js/mapData.js"></script>
+    <script src="./js/map.js"></script>
+    <script src="./js/game.js"></script>
+    <script src="./js/npc.js"></script>
+    <script src="./js/local.js"></script>
+    <script>
+        window.onload = function () {
+            var height = document.documentElement.clientHeight;
+            var kbBox = document.getElementById("kbBox");
+            var top = height - 400;
+            console.log(top);
+            kbBox.setAttribute("style", "height:" + top / 2 + "px");
+
+            var startGameId = document.getElementById("startGame");
+            var enterGameId = document.getElementById("enterGame");
+            var gameId = document.getElementById("gameId");
+            enterGameId.onclick = function () {
+                gameId.setAttribute("style", "display:block");
+                startGameId.setAttribute("style", "display:none");
+                Loop();
+            }
+        }
+    </script>
+</body>
+
+</html>
